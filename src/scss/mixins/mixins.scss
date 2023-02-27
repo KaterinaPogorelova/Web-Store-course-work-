@@ -1,0 +1,11 @@
+@mixin item {
+	width: calc((277px / 1170px)*100%);
+
+	@media (max-width: 1200px) {
+		width: calc((220.5px/700px)*100%);
+	}
+
+	@media (max-width: 768px) {
+		width: 90%;
+	}
+}
