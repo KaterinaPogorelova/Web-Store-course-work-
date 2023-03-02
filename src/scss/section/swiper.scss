@@ -1,21 +1,19 @@
+.swiper {
+    width: 100%;
 
+    .swiper {
+        .swiper-slide {
+            .img {
+                width: 100%;
+                height: auto;
+                object-fit: cover
+            }
 
-.image-slider {
-    padding: 20px 0;
+        }
 
-    &__wrapper {
-
-    }
-    &__slide {
-
-    }
-    &__image {
-        .swiper-photo {
-            max-width: 100%;
-        }  
-        
     }
 }
+
 .image-slider .swiper-button-prev::after,
 .image-slider .swiper-button-next::after {
     color: rgb(191, 47, 138);
