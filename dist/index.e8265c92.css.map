@@ -1,1 +1,27 @@
+<<<<<<< HEAD
 {"mappings":";;AEAA;;;;;;;;;AASA;;;;;;ACTA;;;;AAGC;;;;;;;;;AAQC;EARD;;;;;AAaA;;;;;;;AAMC;EAND;;;;;AAWA;;;;ACxBA;EDwBA;;;;;ACpBA;EDoBA;;;;;AAGC;;;;;;AAQF;;;;;;;;;AASA;;;;;;;;;;;;;;;;;;AAiBC;;;;;AAKA;EAtBD;;;;;AA2BA;;;;;;;;;;;;;;;AAcC;;;;;AAMD;;;;;;;;;;;AAWA;;;;;AAKA;;;;;;;AAOA;;;;;;AAMA;;;;;;;AE3HA;;;;;AAII;;;;;;;AAMI;EANJ;;;;;;AAaJ;;;;;;;;;AAQI;EARJ;;;;;AAeA;;;;;;;;;;;AAUI;;;;AAUA;EApBJ;;;;;;;AA0BI;;;;;;;AAWA;;;;;;;;AASJ;;;;;;;;;;AASI;;;;;AAMJ;;;;;AAII;;;;;AAKA;EACI","sources":["src/scss/style.scss","src/scss/cdn.scss","src/scss/custom.scss","src/scss/sections/trends.scss","src/scss/mixins/mixins.scss","src/scss/sections/header.scss"],"sourcesContent":["@import \"cdn\";\n@import \"custom\";\n@import \"mixins/mixins\";\n@import \"sections/trends\";\n@import \"sections/header.scss\";",null,null,null,null,null],"names":[],"version":3,"file":"index.e8265c92.css.map","sourceRoot":"/__parcel_source_root/"}
+=======
+{
+	"mappings": ";;AEAA;;;;;;;;;AASA;;;;;;ACTA;;;;AAGC;;;;;;;;;AAQC;EARD;;;;;AAaA;;;;;;;AAMC;EAND;;;;;AAWA;;;;ACxBA;EDwBA;;;;;ACpBA;EDoBA;;;;;AAGC;;;;;;AAQF;;;;;;;;;AASA;;;;;;;;;;;;;;;;;;AAiBC;;;;;AAKA;EAtBD;;;;;AA2BA;;;;;;;;;;;;;;;AAcC;;;;;AAMD;;;;;;;;;;;AAWA;;;;;AAKA;;;;;;;AAOA;;;;;;AAMA;;;;;;;AE3HA;;;;;AAII;;;;;;;AAMI;EANJ;;;;;AAYJ;;;;;;;;;AAQI;EARJ;;;;;AAaA;;;;;;;;;AAaI;;;;;;;;AASJ;;;;;AAKI",
+	"sources": [
+		"src/scss/style.scss",
+		"src/scss/cdn.scss",
+		"src/scss/custom.scss",
+		"src/scss/sections/trends.scss",
+		"src/scss/mixins/mixins.scss",
+		"src/scss/sections/header.scss"
+	],
+	"sourcesContent": [
+		"@import \"cdn\";\n@import \"custom\";\n@import \"mixins/mixins\";\n@import \"sections/trends\";\n@import \"sections/header.scss\";",
+		null,
+		null,
+		null,
+		null,
+		null
+	],
+	"names": [],
+	"version": 3,
+	"file": "index.e8265c92.css.map",
+	"sourceRoot": "/__parcel_source_root/"
+}
+>>>>>>> 568a72632c5078f31627425685e2fc9f3bb234da
