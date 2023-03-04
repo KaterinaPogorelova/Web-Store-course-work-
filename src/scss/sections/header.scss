@@ -4,7 +4,6 @@
 
     &--wrapper {
         display: flex;
-        justify-content: space-evenly;
         gap: 80px;
         padding: 15px 80px;
 
@@ -25,8 +24,6 @@
 
     @media (max-width: 768px) {
         font-size: 22px;
-        // display: inline-block;
-        // vertical-align: middle;
     }
 }
 
@@ -40,16 +37,10 @@
     padding: 5px 15px;
     outline: none;
 
-    &:focus{
+    &:focus {
         border: 1px solid #E37A7A;
     }
 
-    // input[type="search"]::-webkit-search-decoration,
-    // input[type="search"]::-webkit-search-cancel-button,
-    // input[type="search"]::-webkit-search-results-button,
-    // input[type="search"]::-webkit-search-results-decoration {
-    // -webkit-appearance:none;
-    // }
     @media (max-width: 768px) {
         border-radius: 10px;
         box-shadow: none;
@@ -61,14 +52,10 @@
         height: 34px;
         display: flex;
         position: relative;
-
-        // &:focus{
-        //     color:#E37A7A
-        // }
     }
 
     &::placeholder {
-        padding: 20px;
+        padding: 20px 0px;
         font-family: 'Jost', sans-serif;
         font-weight: 400;
         font-size: 16px;
@@ -76,36 +63,57 @@
     }
 }
 
-.header__search-button{
-    background: url(/src/img/header/magnifying\ glass.svg) center no-repeat;
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+    display: none;
+}
+
+.header__search-button {
+    background: transparent;
     position: absolute;
     right: 3%;
-    top: 7%;
-    height: 30px;
-    width: 30px;
+    top: 14%;
     border: none;
+    cursor: pointer;
 
-    &:hover{
+    &:focus {
         fill: #E37A7A;
-        cursor: pointer;
     }
 }
 
-.header__shopping-basket {
+.header__basket {
     border: transparent;
     background-color: #EBE5DC;
+    cursor: pointer;
 
-    & svg:hover {
+    &--wrapper{
+        position: relative;
+    }
+
+    &-elem {
+        position: absolute;
+        background: #FF3434;
+        color:#EBE5DC;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        font-family: 'Jost', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: center;
+        right: -20%;
+    }
+
+    &:focus {
         fill: #E37A7A;
-        cursor: pointer;
     }
 
     @media (max-width: 768px) {
         & svg {
             width: 26px;
             height: 26px;
-            // display: inline-block;
-            // vertical-align: middle;
         }
     }
 }

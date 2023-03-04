@@ -1,0 +1,107 @@
+.shopping__bag {
+    width: 280px;
+    height: 420px;
+    background: #D7D7D7;
+    position: absolute;
+    z-index: 1;
+    right: 0%;
+    overflow: auto;
+
+    &-title {
+        font-family: 'Krona One', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        color: #0D0D0E;
+        padding: 20px 30px;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.shopping__bag-button {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+}
+
+.shopping__bag-card{
+    padding: 10px;
+    display: flex;
+    position: relative;
+}
+
+.card__info--wrapper{
+    display: flex;
+}
+
+.card__img--wrapper{
+    width: 76px;
+    height: 76px;
+    object-fit: cover;
+    border-radius: 10px;
+
+    & img{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+}
+
+.card__title{
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin: auto 10;
+}
+
+.card__price, .card__count-sum{
+    font-family: 'Krona One', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #0D0D0E;
+
+    &--wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        position: absolute;
+        right: 5%;
+        top: 20%;
+    }
+}
+
+.card__count{
+    display: flex;
+    margin: 0 auto;
+    gap: 6px;
+}
+
+.shopping__bag-total {
+    font-family: 'Krona One', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #0D0D0E;
+    padding: 26px;
+    position: relative;
+    bottom: 0%;
+}
+
+.card__count-plus, .card__count-minus{
+    border: none;
+    border-radius: 50%;
+    background: #9A998C;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+
+    &:hover{
+        cursor:pointer;
+        background-color: #E37A7A;
+    }
+}
