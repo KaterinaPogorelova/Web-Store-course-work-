@@ -1,0 +1,33 @@
+/*.main .container {
+    max-width: 1510px;
+    padding: 0;
+}
+
+.swiper {
+    max-width: 1510px;
+    height: 535px;
+    margin: 0 auto;
+}
+
+.swiper-slide {
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.image-slider .swiper-button-prev::after,
+.image-slider .swiper-button-next::after {
+    color: rgb(191, 47, 138);
+}*/
+.swiper {
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=swiper.css.map */
