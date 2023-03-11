@@ -33,7 +33,7 @@
         display: block;
     }
 
-    &-notempty{
+    &-empty{
         display: inline;
     }
 }
@@ -113,6 +113,10 @@
     font-size: 18px;
     color: #0D0D0E;
     padding: 20px 30px;
+}
+
+.total__empty{
+    display: none;
 }
 
 .card__count-plus, .card__count-minus{
