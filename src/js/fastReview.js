@@ -1,7 +1,7 @@
 const items = document.querySelectorAll('.item__img-wrapper')
 const allBtnReview = document.querySelectorAll('.img-wrapper__button_review')
 
-function hideAndShowReviewBtn(item) {
+export function hideAndShowReviewBtn(item) {
 	//Исправить потом: убрать цикл, добавить функцию в функцию генерации карточки товара
 	for (const elem of items) {
 		elem.addEventListener('mouseover', () => {
@@ -16,14 +16,14 @@ function hideAndShowReviewBtn(item) {
 }
 hideAndShowReviewBtn()
 
-//Генерируем окно рассмотрения товара вблизи
+//Генерируем окно рассмотрения товара вблизи, тоже добавить в генерацию карточек
 
 for (const elem of allBtnReview) {
 	elem.addEventListener('click', generateItemFastReview)
 }
 
 //Функция для генерации окна просмотра товара вблизи
-function generateItemFastReview(item) {
+export function generateItemFastReview(item) {
 	//Добавить затемнение экрана на body
 	const darkBack = document.createElement('div')
 	darkBack.classList.add('dark-back')

@@ -3,18 +3,17 @@ const basketMenu = document.querySelector('.shopping__bag');
 const basketBtn = document.querySelector('.header__basket');
 
 //открывает корзину по клику
-export const getBasket = basket.addEventListener('click', () =>{
+export const getBasket = basket.addEventListener('click', () => {
     basketBtn.classList.toggle('basket__active');
     basketMenu.classList.toggle('shopping__bag--active');
 })
 
 let cards = [];
-localStorage.setItem('cart', JSON.stringify(cards));
 
 //отрисовка карточек на странице
 export const getCards = () => {
     cards = JSON.parse(localStorage.getItem('cart'));
-    if (cards.length === 0){
+    if (cards.length === 0) {
         const emptyBag = document.querySelector('.shopping__bag-empty');
         emptyBag.style.display = 'inline';
         const trashcan = document.querySelector('.shopping__bag-trashcan');
@@ -25,3 +24,5 @@ export const getCards = () => {
 }
 
 getCards()
+//Вставить функцию записи в локал сторадж в функцию добавления товара в корзину 
+localStorage.setItem('cart', JSON.stringify(cards));
