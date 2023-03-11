@@ -106,14 +106,14 @@ input::-webkit-search-results-decoration {
         right: -20%;
     }
 
-    &:focus {
-        fill: #E37A7A;
-    }
-
     @media (max-width: 768px) {
         & svg {
             width: 26px;
             height: 26px;
         }
     }
+}
+
+.basket__active{
+    fill: #E37A7A;
 }

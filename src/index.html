@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	
+
 	<header class="header">
 		<div class="container header--wrapper">
 			<div class="header__logo--wrapper">
@@ -39,8 +39,8 @@
 	</header>
 	<section class="basket">
 		<div class="shopping__bag">
-			<h3 class="shopping__bag-title">Your cart</h3>
-			<button class="shopping__bag-button">
+			<h3 class="shopping__bag-title">Your cart <span class="shopping__bag-empty">is empty</span></h3>
+			<button class="shopping__bag-trashcan">
 				<svg width="40" height="39" viewBox="0 0 40 39" xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink">
 					<rect width="40" height="39" fill="url(#pattern0)" />
@@ -54,69 +54,71 @@
 					</defs>
 				</svg>
 			</button>
-			<div class="shopping__bag-card">
-				<div class="card__info--wrapper">
-					<div class="card__img--wrapper">
-						<img src="./img/basket/item.svg" alt="item">
+			<div class="shopping__bag-card--wrapper">
+				<!-- <div class="shopping__bag-card">
+					<div class="card__info--wrapper">
+						<div class="card__img--wrapper">
+							<img src="./img/basket/item.svg" alt="item">
+						</div>
+						<p class="card__title">Gucci Bag</p>
 					</div>
-					<p class="card__title">Gucci Bag</p>
-				</div>
-				<div class="card__price--wrapper">
-					<p class="card__price">1000 €</p>
-					<div class="card__count">
-						<button class="card__count-minus">-</button>
-						<p class="card__count-sum">2</p>
-						<button class="card__count-plus">+</button>
-					</div>
-				</div>
-			</div>
-			<div class="shopping__bag-card">
-				<div class="card__info--wrapper">
-					<div class="card__img--wrapper">
-						<img src="./img/basket/item.svg" alt="item">
-					</div>
-					<p class="card__title">Gucci Bag</p>
-				</div>
-				<div class="card__price--wrapper">
-					<p class="card__price">1000 €</p>
-					<div class="card__count">
-						<button class="card__count-minus">-</button>
-						<p class="card__count-sum">2</p>
-						<button class="card__count-plus">+</button>
+					<div class="card__price--wrapper">
+						<p class="card__price">1000 €</p>
+						<div class="card__count">
+							<button class="card__count-minus">-</button>
+							<p class="card__count-sum">2</p>
+							<button class="card__count-plus">+</button>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="shopping__bag-card">
-				<div class="card__info--wrapper">
-					<div class="card__img--wrapper">
-						<img src="./img/basket/item.svg" alt="item">
+				<div class="shopping__bag-card">
+					<div class="card__info--wrapper">
+						<div class="card__img--wrapper">
+							<img src="./img/basket/item.svg" alt="item">
+						</div>
+						<p class="card__title">Gucci Bag</p>
 					</div>
-					<p class="card__title">Gucci Bag</p>
-				</div>
-				<div class="card__price--wrapper">
-					<p class="card__price">1000 €</p>
-					<div class="card__count">
-						<button class="card__count-minus">-</button>
-						<p class="card__count-sum">2</p>
-						<button class="card__count-plus">+</button>
-					</div>
-				</div>
-			</div>
-			<div class="shopping__bag-card">
-				<div class="card__info--wrapper">
-					<div class="card__img--wrapper">
-						<img src="./img/basket/item.svg" alt="item">
-					</div>
-					<p class="card__title">Gucci Bag</p>
-				</div>
-				<div class="card__price--wrapper">
-					<p class="card__price">1000 €</p>
-					<div class="card__count">
-						<button class="card__count-minus">-</button>
-						<p class="card__count-sum">2</p>
-						<button class="card__count-plus">+</button>
+					<div class="card__price--wrapper">
+						<p class="card__price">1000 €</p>
+						<div class="card__count">
+							<button class="card__count-minus">-</button>
+							<p class="card__count-sum">2</p>
+							<button class="card__count-plus">+</button>
+						</div>
 					</div>
 				</div>
+				<div class="shopping__bag-card">
+					<div class="card__info--wrapper">
+						<div class="card__img--wrapper">
+							<img src="./img/basket/item.svg" alt="item">
+						</div>
+						<p class="card__title">Gucci Bag</p>
+					</div>
+					<div class="card__price--wrapper">
+						<p class="card__price">1000 €</p>
+						<div class="card__count">
+							<button class="card__count-minus">-</button>
+							<p class="card__count-sum">2</p>
+							<button class="card__count-plus">+</button>
+						</div>
+					</div>
+				</div>
+				<div class="shopping__bag-card">
+					<div class="card__info--wrapper">
+						<div class="card__img--wrapper">
+							<img src="./img/basket/item.svg" alt="item">
+						</div>
+						<p class="card__title">Gucci Bag</p>
+					</div>
+					<div class="card__price--wrapper">
+						<p class="card__price">1000 €</p>
+						<div class="card__count">
+							<button class="card__count-minus">-</button>
+							<p class="card__count-sum">2</p>
+							<button class="card__count-plus">+</button>
+						</div>
+					</div>
+				</div> -->
 			</div>
 			<h3 class="shopping__bag-total">Total: 1500 €</h3>
 		</div>
@@ -126,26 +128,51 @@
 			<div class="swiper">
 				<div class="image-slider__wrapper swiper-wrapper">
 					<div class="image-slider__slide swiper-slide">
+						<div class="image-slider__info">
+							<h1 class="image-slider__title">Summer Sales</h1>
+							<p class="image-slider__slogan">It's the summer sales you've always dreamed of!</p>
+							<a href="#" class="image-slider__link">Check out our summer collection now!</a>
+						</div>
 						<div class="image-slider__image">
-							<img src="../swipe-photo.jpg" alt="photo">
+							<img src="https://res.cloudinary.com/dxnei7nys/image/upload/v1678476852/slider/kat-snow-T-YVleAeLUY-unsplash_vdtqjv.jpg"
+								alt="brend1">
 						</div>
 
 					</div>
 					<div class="image-slider__slide swiper-slide">
+						<div class="image-slider__info">
+							<h1 class="image-slider__title">Brand new hat collection</h1>
+							<p class="image-slider__slogan">We know hat!</p>
+							<a href="#" class="image-slider__link">Discover collection here!</a>
+						</div>
 						<div class="image-slider__image">
-							<img src="../swipe-photo.jpg" alt="photo">
+							<img src="https://res.cloudinary.com/dxnei7nys/image/upload/ar_16:9,c_fill,e_sharpen,g_auto,w_1170/v1678476851/slider/sour-moha-cC2Kii9J2cA-unsplash_bwmoxv.jpg"
+								alt="brend1">
+						</div>
+
+
+					</div>
+					<div class="image-slider__slide swiper-slide">
+						<div class="image-slider__info">
+							<h1 class="image-slider__title">Only marvelous sunglasses</h1>
+							<p class="image-slider__slogan">Prepare for summer and make it double!</p>
+							<a href="#" class="image-slider__link">Click here!</a>
+						</div>
+						<div class="image-slider__image">
+							<img src="https://res.cloudinary.com/dxnei7nys/image/upload/v1678476839/slider/atikh-bana_tuij9u.jpg"
+								alt="brend1">
 						</div>
 
 					</div>
 					<div class="image-slider__slide swiper-slide">
-						<div class="image-slider__image">
-							<img src="../swipe-photo.jpg" alt="photo">
+						<div class="image-slider__info">
+							<h1 class="image-slider__title">Enjoy your style</h1>
+							<p class="image-slider__slogan">Be who you are!</p>
+							<a href="#" class="image-slider__link">Find your own style</a>
 						</div>
-
-					</div>
-					<div class="image-slider__slide swiper-slide">
 						<div class="image-slider__image">
-							<img src="../swipe-photo.jpg" alt="photo">
+							<img src="https://res.cloudinary.com/dxnei7nys/image/upload/v1678476851/slider/joshua-rawson-harris-Cy1tY6A8Cbk-unsplash_vjikzq.jpg"
+								alt="brend1">
 						</div>
 
 					</div>
@@ -162,6 +189,42 @@
 			<h1 class="trends__title">Trending now</h1>
 			<div class="trends__item-wrapper">
 				<!-- <div class="trends__item">
+				<!-- <div class="trend__item-full">
+					<div class="close"></div>
+					<div class="item-full__img-wrapper">
+						<img src="img/trends/laura-chouette.jpg" alt="Jacket">
+					</div>
+					<div class="item-full__info-wrapper">
+						<div class="item-full__info">
+							<h2 class="item-full__title">Jacket</h2>
+							<div class="item__prices">
+								<p class="item__price item__item__current-price item__price--full"><span
+										class="sale-price">500</span>$</p>
+								<p class="item__price item__price-before-sale item__price--full"><span
+										class="price">750</span>$</p>
+							</div>
+						</div>
+						<ul class="item-full__sizes">
+							<li class="item-full__size">
+								<label class="size__value"> XS</label>
+							</li>
+							<li class="item-full__size">
+								<label class="size__value"> S</label>
+							</li>
+							<li class="item-full__size">
+								<label class="size__value"> M</label>
+							</li>
+							<li class="item-full__size">
+								<label class="size__value"> L</label>
+							</li>
+							<li class="item-full__size">
+								<label class="size__value"> XL</label>
+							</li>
+						</ul>
+						<button class="item-full__button-cart">Add to Cart</button>
+					</div>
+				</div> -->
+				<div class="trends__item">
 					<div class="item__img-wrapper">
 						<img src="img/trends/laura-chouette.jpg" alt="jakiet">
 						<button class="img-wrapper__button_review">FAST REVIEW</button>
@@ -242,6 +305,7 @@
 
 	</section>
 	<script src="js/script.js" type="module"></script>
+	<script src="js/fastReview.js" type="module"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 </body>

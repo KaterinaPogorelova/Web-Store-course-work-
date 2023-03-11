@@ -1,11 +1,13 @@
 .shopping__bag {
-    width: 280px;
-    height: 420px;
+    display: none;
+    width: 320px;
+    height: 490px;
     background: #D7D7D7;
     position: absolute;
-    z-index: 1;
+    z-index: 5;
     right: 0%;
-    overflow: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     &-title {
         font-family: 'Krona One', sans-serif;
@@ -15,13 +17,24 @@
         padding: 20px 30px;
     }
 
+    &-empty{
+        display: none;
+    }
+
     @media (max-width: 768px) {
         width: 100%;
         height: 100%;
     }
 }
 
-.shopping__bag-button {
+.shopping__bag{
+
+    &--active{
+        display: block;
+    }
+}
+
+.shopping__bag-trashcan {
     background: none;
     border: none;
     position: absolute;
@@ -34,6 +47,11 @@
     padding: 10px;
     display: flex;
     position: relative;
+
+    &--wrapper{
+        height: 366px;
+        overflow: auto;
+    }
 }
 
 .card__info--wrapper{
@@ -87,9 +105,7 @@
     font-weight: 400;
     font-size: 18px;
     color: #0D0D0E;
-    padding: 26px;
-    position: relative;
-    bottom: 0%;
+    padding: 20px 30px;
 }
 
 .card__count-plus, .card__count-minus{
