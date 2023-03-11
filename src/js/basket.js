@@ -15,12 +15,12 @@ localStorage.setItem('cart', JSON.stringify(cards));
 export const getCards = () => {
     cards = JSON.parse(localStorage.getItem('cart'));
     if (cards.length === 0){
-        const emptyBag = document.querySelector('.shopping__bag-not__empty');
-        emptyBag.classList.add('shopping__bag-empty');
+        const emptyBag = document.querySelector('.shopping__bag-empty');
+        emptyBag.style.display = 'inline';
         const trashcan = document.querySelector('.shopping__bag-trashcan');
-        trashcan.classList.add('trashcan__empty');
+        trashcan.style.display = 'none';
         const total = document.querySelector('.shopping__bag-total');
-        total.classList.add('total__empty');
+        total.style.display = 'none';
     }
 }
 

@@ -32,11 +32,8 @@
     &--active{
         display: block;
     }
-
-    &-empty{
-        display: inline;
-    }
 }
+
 .shopping__bag-trashcan {
     background: none;
     border: none;
@@ -46,10 +43,6 @@
     cursor: pointer;
 }
 
-.trashcan__empty{
-    display: none;
-}
-
 .shopping__bag-card{
     padding: 10px;
     display: flex;
@@ -57,7 +50,7 @@
 
     &--wrapper{
         height: 366px;
-        overflow: scroll;
+        overflow: auto;
     }
 }
 
@@ -113,10 +106,6 @@
     font-size: 18px;
     color: #0D0D0E;
     padding: 20px 30px;
-}
-
-.total__empty{
-    display: none;
 }
 
 .card__count-plus, .card__count-minus{
