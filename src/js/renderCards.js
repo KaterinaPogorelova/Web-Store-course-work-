@@ -1,6 +1,7 @@
+import { generateItemFastReview } from './fastReview.js'
 export const trendsItemWrapper = document.querySelector('.trends__item-wrapper')
 
-export function renderCards ({title, currentPrice, id, beforePrice}) {
+export function renderCards({ title, currentPrice, id, beforePrice }) {
     const trendsItem = document.createElement('div')
     trendsItem.className = "trends__item"
     trendsItemWrapper.append(trendsItem)
@@ -14,6 +15,13 @@ export function renderCards ({title, currentPrice, id, beforePrice}) {
     buttonReview.className = "img-wrapper__button_review"
     ItemImgWrapper.append(buttonReview)
     buttonReview.textContent = 'FAST REVIEW'
+    ItemImgWrapper.addEventListener('mouseover', () => {
+        buttonReview.style.display = 'block'
+    })
+    ItemImgWrapper.addEventListener('mouseout', () => {
+        buttonReview.style.display = 'none'
+    })
+    buttonReview.addEventListener('click', () => { generateItemFastReview({ title, currentPrice, beforePrice }) })
 
     const buttonCard = document.createElement('button')
     buttonCard.className = "img-wrapper__button_cart-add"
@@ -25,7 +33,7 @@ export function renderCards ({title, currentPrice, id, beforePrice}) {
     sale.className = "img-wrapper__sale"
     ItemImgWrapper.append(sale)
     sale.textContent = 'sale'
-    
+
     const priceWrapper = document.createElement('div')
     priceWrapper.className = "item__price-wrapper"
     trendsItem.append(priceWrapper)
@@ -33,7 +41,7 @@ export function renderCards ({title, currentPrice, id, beforePrice}) {
     const price = document.createElement('p')
     price.className = "item__price"
     priceWrapper.append(price)
-    price.textContent =  currentPrice
+    price.textContent = currentPrice
 
     const priceBeforeSale = document.createElement('p')
     priceBeforeSale.className = "item__price item__price-before-sale"
@@ -48,14 +56,14 @@ export function renderCards ({title, currentPrice, id, beforePrice}) {
 
 
 
-function getTodos () {
-    fetch (`https://6405d1c4eed195a99f8d974d.mockapi.io/api/items`)
-    .then((response) => response.json())
-    .then((json) => {
-        for (const object of json) {
-            renderCards(object)
-        }
-    })
-    .catch(error => console.log(error))
+function getTodos() {
+    fetch(`https://6405d1c4eed195a99f8d974d.mockapi.io/api/items`)
+        .then((response) => response.json())
+        .then((json) => {
+            for (const object of json) {
+                renderCards(object)
+            }
+        })
+        .catch(error => console.log(error))
 }
 getTodos()

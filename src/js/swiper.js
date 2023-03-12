@@ -1,4 +1,4 @@
-export const swiper = new Swiper ('.swiper', {
+export const swiper = new Swiper('.swiper', {
     loop: true,
     navigation: {
         nextEl: '.swiper-button-next',
@@ -8,5 +8,7 @@ export const swiper = new Swiper ('.swiper', {
         el: '.swiper-pagination',
         clickable: true,
     },
-   
+    autoplay: {
+        delay: 5000,
+    },
 });
