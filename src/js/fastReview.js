@@ -1,29 +1,5 @@
-const items = document.querySelectorAll('.item__img-wrapper')
-const allBtnReview = document.querySelectorAll('.img-wrapper__button_review')
-
-export function hideAndShowReviewBtn(item) {
-	//Исправить потом: убрать цикл, добавить функцию в функцию генерации карточки товара
-	for (const elem of items) {
-		elem.addEventListener('mouseover', () => {
-			let btnReview = elem.children[1]
-			btnReview.style.display = 'block'
-		})
-		elem.addEventListener('mouseout', () => {
-			let btnReview = elem.children[1]
-			btnReview.style.display = 'none'
-		})
-	}
-}
-hideAndShowReviewBtn()
-
-//Генерируем окно рассмотрения товара вблизи, тоже добавить в генерацию карточек
-
-for (const elem of allBtnReview) {
-	elem.addEventListener('click', generateItemFastReview)
-}
-
 //Функция для генерации окна просмотра товара вблизи
-export function generateItemFastReview(item) {
+export function generateItemFastReview({ title, currentPrice, beforePrice }) {
 	//Добавить затемнение экрана на body
 	const darkBack = document.createElement('div')
 	darkBack.classList.add('dark-back')
@@ -52,11 +28,11 @@ export function generateItemFastReview(item) {
 	fullInfo.classList.add('item-full__info')
 	fullInfoWrap.append(fullInfo)
 
-	const title = document.createElement('h2')
-	title.classList.add('item-full__title')
+	const itemTitle = document.createElement('h2')
+	itemTitle.classList.add('item-full__title')
 	//Вставить название товара
-	title.innerText = 'Jacket'
-	fullInfo.append(title)
+	itemTitle.innerText = title
+	fullInfo.append(itemTitle)
 	const itemPrices = document.createElement('div')
 	itemPrices.classList.add('item__prices')
 	fullInfo.append(itemPrices)
@@ -66,7 +42,7 @@ export function generateItemFastReview(item) {
 	const salePrice = document.createElement('span')
 	salePrice.classList.add('sale-price')
 	//Вставить цену после скидки
-	salePrice.innerText = 500
+	salePrice.innerText = currentPrice
 	fullCurrentPrice.innerText = '$'
 	fullCurrentPrice.prepend(salePrice)
 
@@ -76,7 +52,7 @@ export function generateItemFastReview(item) {
 	const price = document.createElement('span')
 	price.classList.add('price')
 	//Вставить цену до скидки
-	price.innerText = 750
+	price.innerText = beforePrice
 	fullBeforePrice.innerText = '$'
 	fullBeforePrice.prepend(price)
 	//Вставить размеры, если нужно 
