@@ -9,7 +9,7 @@ export const getBasket = basket.addEventListener('click', () => {
 })
 
 let cards = [];
-
+localStorage.setItem('cart', JSON.stringify(cards));
 //отрисовка карточек на странице
 export const getCards = () => {
     cards = JSON.parse(localStorage.getItem('cart'));
