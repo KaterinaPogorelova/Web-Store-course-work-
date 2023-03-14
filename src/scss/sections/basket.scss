@@ -17,7 +17,7 @@
         padding: 20px 30px;
     }
 
-    &-empty{
+    &-empty {
         display: none;
     }
 
@@ -27,9 +27,9 @@
     }
 }
 
-.shopping__bag{
+.shopping__bag {
 
-    &--active{
+    &--active {
         display: block;
     }
 }
@@ -43,61 +43,105 @@
     cursor: pointer;
 }
 
-.shopping__bag-card{
+.shopping__bag-card {
     padding: 10px;
     display: flex;
-    position: relative;
+    justify-content: space-between;
 
-    &--wrapper{
+    &--wrapper {
         height: 366px;
         overflow: auto;
     }
 }
 
-.card__info--wrapper{
-    display: flex;
+.closeBtn {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    opacity: 0.3;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+
+    &::before,
+    &::after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 17px;
+        width: 2px;
+        background-color: #333;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
 }
 
-.card__img--wrapper{
+
+.card__info--wrapper {
+    display: flex;
+    width: 65%;
+}
+
+.card__img--wrapper {
     width: 76px;
     height: 76px;
     object-fit: cover;
     border-radius: 10px;
+    overflow: hidden;
 
-    & img{
+    & img {
         width: 100%;
         height: 100%;
-        overflow: hidden;
+        object-fit: cover;
     }
 }
 
-.card__title{
-    font-family: 'Jost', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
+.card__text {
     margin: auto 10;
 }
 
-.card__price, .card__count-sum{
+.card__title {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    //margin: auto 10;
+}
+
+.card__sizes {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #9A998C;
+}
+
+
+.card__price,
+.card__count-sum {
     font-family: 'Krona One', sans-serif;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     color: #0D0D0E;
 
-    &--wrapper{
+    &--wrapper {
         display: flex;
         flex-direction: column;
-        gap: 6px;
-        position: absolute;
-        right: 5%;
-        top: 20%;
+        gap: 5px;
+        padding-top: 15px;
     }
 }
 
-.card__count{
+.card__count {
     display: flex;
     margin: 0 auto;
-    gap: 6px;
+    gap: 5px;
 }
 
 .shopping__bag-total {
@@ -108,16 +152,17 @@
     padding: 20px 30px;
 }
 
-.card__count-plus, .card__count-minus{
+.card__count-plus,
+.card__count-minus {
     border: none;
     border-radius: 50%;
     background: #9A998C;
-    width: 28px;
-    height: 28px;
+    width: 25px;
+    height: 25px;
     font-size: 18px;
 
-    &:hover{
-        cursor:pointer;
+    &:hover {
+        cursor: pointer;
         background-color: #E37A7A;
     }
 }

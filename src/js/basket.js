@@ -1,3 +1,5 @@
+import { generateCartItem } from './addToCart.js'
+
 const basket = document.querySelector('.header__basket--wrapper');
 const basketMenu = document.querySelector('.shopping__bag');
 const basketBtn = document.querySelector('.header__basket');
@@ -9,11 +11,10 @@ export const getBasket = basket.addEventListener('click', () => {
 })
 
 let cards = [];
-localStorage.setItem('cart', JSON.stringify(cards));
-//отрисовка карточек на странице
-export const getCards = () => {
-    cards = JSON.parse(localStorage.getItem('cart'));
-    if (cards.length === 0) {
+
+//Изменяет внешний вид корзины в зависимости есть ли там товар, или нет
+export function changeCart(cart) {
+    if (cart.length === 0) {
         const emptyBag = document.querySelector('.shopping__bag-empty');
         emptyBag.style.display = 'inline';
         const trashcan = document.querySelector('.shopping__bag-trashcan');
@@ -21,8 +22,41 @@ export const getCards = () => {
         const total = document.querySelector('.shopping__bag-total');
         total.style.display = 'none';
     }
+    else {
+        const emptyBag = document.querySelector('.shopping__bag-empty');
+        emptyBag.style.display = 'none';
+        const trashcan = document.querySelector('.shopping__bag-trashcan');
+        trashcan.style.display = 'block';
+        const total = document.querySelector('.shopping__bag-total');
+        total.style.display = 'block';
+    }
+}
+
+//Отрисовка только добавленной карточки товара в корзину и добавление её в localStorage
+export function getCard(idItem) {
+    if (!(localStorage.hasOwnProperty('cart'))) {
+        return
+    }
+    cards = JSON.parse(localStorage.getItem('cart'));
+    changeCart(cards)
+    for (const elem of cards) {
+        if (elem.id === idItem) {
+            generateCartItem(elem.title, elem.currentPrice, elem.imgSrc, elem.count, elem.id)
+        }
+    }
+}
+
+//Отрисовка карточек товаров из localStorage при перезагрузке
+export const getCards = () => {
+    if (!(localStorage.hasOwnProperty('cart'))) {
+        return
+    }
+    cards = JSON.parse(localStorage.getItem('cart'));
+    changeCart(cards)
+    for (let i = 0; i < cards.length; i++) {
+        generateCartItem(cards[i].title, cards[i].currentPrice, cards[i].imgSrc, cards[i].count, cards[i].id)
+    }
 }
 
 getCards()
-//Вставить функцию записи в локал сторадж в функцию добавления товара в корзину 
 localStorage.setItem('cart', JSON.stringify(cards));

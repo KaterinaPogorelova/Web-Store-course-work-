@@ -19,7 +19,7 @@
 		flex-wrap: wrap;
 		gap: 50px 20px;
 		justify-content: space-between;
-		
+
 
 		@media (max-width: 768px) {
 			justify-content: center;
@@ -34,7 +34,7 @@
 			height: 100%;
 			object-fit: cover;
 		}
-		
+
 	}
 }
 
@@ -45,7 +45,6 @@
 	margin: 0 auto;
 	border-radius: 16px;
 	overflow: hidden;
-	background-image: url(../img/trends/laura-chouette.jpg);
 	background-size: cover;
 }
 
