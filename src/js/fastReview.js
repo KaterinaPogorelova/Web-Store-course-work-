@@ -1,5 +1,7 @@
+import { existInStorage, addToCart, changeCountNum } from './addToCart.js'
+import { getCard } from './basket.js'
 //Функция для генерации окна просмотра товара вблизи
-export function generateItemFastReview({ title, currentPrice, beforePrice }) {
+export function generateItemFastReview(title, currentPrice, id, beforePrice, source) {
 	//Добавить затемнение экрана на body
 	const darkBack = document.createElement('div')
 	darkBack.classList.add('dark-back')
@@ -117,6 +119,15 @@ export function generateItemFastReview({ title, currentPrice, beforePrice }) {
 	buttonFullCart.classList.add('item-full__button-cart')
 	buttonFullCart.innerText = 'Add to Cart'
 	fullInfoWrap.append(buttonFullCart)
+	buttonFullCart.addEventListener('click', () => {
+		let exist = existInStorage(id)
+		if (!exist) {
+			addToCart(title, currentPrice, id, source)
+			getCard(id)
+		} else {
+			changeCountNum(id)
+		}
+	})
 	//Анимировать кнопку close
 	close.addEventListener('click', () => {
 		fullItem.remove()
