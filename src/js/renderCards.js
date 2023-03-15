@@ -3,7 +3,7 @@ import { existInStorage, addToCart, changeCountNum } from './addToCart.js'
 import { getCard } from './basket.js'
 export const trendsItemWrapper = document.querySelector('.trends__item-wrapper')
 
-export function renderCards({ title, currentPrice, id, beforePrice }) {
+export function renderCards({ title, currentPrice, id, beforePrice, imgSrc }) {
     const trendsItem = document.createElement('div')
     trendsItem.className = "trends__item"
     trendsItemWrapper.append(trendsItem)
@@ -13,8 +13,7 @@ export function renderCards({ title, currentPrice, id, beforePrice }) {
     ItemImgWrapper.className = "item__img-wrapper"
     trendsItem.append(ItemImgWrapper)
     const image = document.createElement('img')
-    //Заменить ссылкой из мокапи
-    image.src = "https://loremflickr.com/640/480"
+    image.src = imgSrc
     image.alt = title
     ItemImgWrapper.append(image)
     const buttonReview = document.createElement('button')
@@ -52,7 +51,7 @@ export function renderCards({ title, currentPrice, id, beforePrice }) {
     const sale = document.createElement('p')
     sale.className = "img-wrapper__sale"
     ItemImgWrapper.append(sale)
-    sale.textContent = 'sale'
+    sale.textContent = countPercent(currentPrice, beforePrice)
 
     const priceWrapper = document.createElement('div')
     priceWrapper.className = "item__price-wrapper"
@@ -61,19 +60,18 @@ export function renderCards({ title, currentPrice, id, beforePrice }) {
     const price = document.createElement('p')
     price.className = "item__price"
     priceWrapper.append(price)
-    price.textContent = currentPrice
+    price.textContent = currentPrice + '$'
 
     const priceBeforeSale = document.createElement('p')
     priceBeforeSale.className = "item__price item__price-before-sale"
     priceWrapper.append(priceBeforeSale)
-    priceBeforeSale.textContent = beforePrice
+    priceBeforeSale.textContent = beforePrice + '$'
 
     const itemTitle = document.createElement('h3')
     itemTitle.className = "item__title"
     trendsItem.append(itemTitle)
     itemTitle.textContent = title
 }
-
 
 
 function getItems() {
@@ -87,3 +85,8 @@ function getItems() {
         .catch(error => console.log(error))
 }
 getItems()
+
+// считает процент скидки
+function countPercent (currentPrice, beforePrice) {
+return Math.round(100 - ((currentPrice / beforePrice) * 100)) + '%'
+}
