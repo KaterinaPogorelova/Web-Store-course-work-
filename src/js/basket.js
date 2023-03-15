@@ -3,7 +3,18 @@ import { generateCartItem } from './addToCart.js'
 const basket = document.querySelector('.header__basket--wrapper');
 const basketMenu = document.querySelector('.shopping__bag');
 const basketBtn = document.querySelector('.header__basket');
+const clearbtn = document.querySelector('.shopping__bag-trashcan');
 
+clearbtn.addEventListener('click', () => {
+    if (!(localStorage.hasOwnProperty('cart'))) {
+        return
+    }
+    const basket = document.querySelector('.shopping__bag-card--wrapper');
+    let clearedCart = []
+    localStorage.setItem('cart', JSON.stringify(clearedCart));
+    basket.innerHTML = ''
+    changeCart(clearedCart)
+})
 //открывает корзину по клику
 export const getBasket = basket.addEventListener('click', () => {
     basketBtn.classList.toggle('basket__active');
@@ -33,7 +44,7 @@ export function changeCart(cart) {
 }
 
 //Отрисовка только добавленной карточки товара в корзину и добавление её в localStorage
-export function getCard(idItem) {
+export function getCard(idItem, needSizes, size) {
     if (!(localStorage.hasOwnProperty('cart'))) {
         return
     }
@@ -41,7 +52,17 @@ export function getCard(idItem) {
     changeCart(cards)
     for (const elem of cards) {
         if (elem.id === idItem) {
-            generateCartItem(elem.title, elem.currentPrice, elem.imgSrc, elem.count, elem.id)
+            if (needSizes) {
+                if (size === undefined) {
+                    generateCartItem(elem.title, elem.currentPrice, elem.imgSrc, elem.count, elem.id, needSizes, 'XS')
+                } else {
+                    if (elem.size === size) {
+                        generateCartItem(elem.title, elem.currentPrice, elem.imgSrc, elem.count, elem.id, needSizes, size)
+                    }
+                }
+            } else {
+                generateCartItem(elem.title, elem.currentPrice, elem.imgSrc, elem.count, elem.id, needSizes)
+            }
         }
     }
 }
@@ -54,7 +75,11 @@ export const getCards = () => {
     cards = JSON.parse(localStorage.getItem('cart'));
     changeCart(cards)
     for (let i = 0; i < cards.length; i++) {
-        generateCartItem(cards[i].title, cards[i].currentPrice, cards[i].imgSrc, cards[i].count, cards[i].id)
+        if (cards[i].size) {
+            generateCartItem(cards[i].title, cards[i].currentPrice, cards[i].imgSrc, cards[i].count, cards[i].id, cards[i].needSizes, cards[i].size)
+        } else {
+            generateCartItem(cards[i].title, cards[i].currentPrice, cards[i].imgSrc, cards[i].count, cards[i].id, cards[i].needSizes)
+        }
     }
 }
 
