@@ -1,3 +1,4 @@
+import { increaseCount } from './basketCounter.js'
 import { existInStorage, addToCart, changeCountNum, addtoCartPopUp } from './addToCart.js'
 import { getCard } from './basket.js'
 
@@ -126,6 +127,9 @@ export function generateItemFastReview(title, currentPrice, id, beforePrice, sou
 	buttonFullCart.innerText = 'Add to Cart'
 	fullInfoWrap.append(buttonFullCart)
 	buttonFullCart.addEventListener('click', () => {
+		if (!(localStorage.hasOwnProperty('cart'))) {
+			return
+		}
 		if (needSizes && selectedSize === '') {
 			chooseSizePopUp()
 		} else {
@@ -135,10 +139,12 @@ export function generateItemFastReview(title, currentPrice, id, beforePrice, sou
 					addToCart(title, currentPrice, id, source, needSizes, selectedSize)
 					getCard(id, needSizes, selectedSize)
 					selectedSize = ''
+					increaseCount()
 					addtoCartPopUp()
 				} else {
 					addToCart(title, currentPrice, id, source, needSizes)
 					getCard(id, needSizes)
+					increaseCount()
 					addtoCartPopUp()
 				}
 			} else {

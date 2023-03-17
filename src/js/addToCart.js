@@ -1,4 +1,5 @@
 import { changeCart } from './basket.js'
+import { addCountItems, reduceCount, increaseCount } from './basketCounter.js';
 function CartItem(title, currentPrice, id, imgSrc, needSizes, size) {
 	this.title = title
 	this.currentPrice = currentPrice
@@ -128,7 +129,6 @@ export function generateCartItem(title, currentPrice, source, count, id, needSiz
 	card.append(close)
 	close.addEventListener('click', () => {
 		card.remove()
-		console.log(size)
 		let cart = JSON.parse(localStorage.getItem('cart'));
 		if (needSizes) {
 			for (let i = 0; i < cart.length; i++) {
@@ -147,11 +147,11 @@ export function generateCartItem(title, currentPrice, source, count, id, needSiz
 				}
 			}
 		}
+		addCountItems()
 	})
 }
 
 //Функция, меняющая значение количества товара в localStorage и в корзине
-//Дополнить функцию для анимации плюс и минус
 export function changeCountNum(itemId, needSizes, size, needReduce) {
 	let card
 	if (size) {
@@ -171,12 +171,14 @@ export function changeCountNum(itemId, needSizes, size, needReduce) {
 				if (needReduce && countNum > 1) {
 					elem.count--
 					count.innerText = countNum - 1
+					reduceCount()
 					localStorage.setItem('cart', JSON.stringify(cart));
 				} else if (needReduce && countNum === 1) {
 					return
 				} else {
 					elem.count++
 					count.innerText = countNum + 1
+					increaseCount()
 					localStorage.setItem('cart', JSON.stringify(cart));
 				}
 
@@ -188,12 +190,14 @@ export function changeCountNum(itemId, needSizes, size, needReduce) {
 				if (needReduce && countNum > 1) {
 					elem.count--
 					count.innerText = countNum - 1
+					reduceCount()
 					localStorage.setItem('cart', JSON.stringify(cart));
 				} else if (needReduce && countNum === 1) {
 					return
 				} else {
 					elem.count++
 					count.innerText = countNum + 1
+					increaseCount()
 					localStorage.setItem('cart', JSON.stringify(cart));
 				}
 			}

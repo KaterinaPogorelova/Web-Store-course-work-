@@ -88,14 +88,14 @@ input::-webkit-search-results-decoration {
     background-color: #EBE5DC;
     cursor: pointer;
 
-    &--wrapper{
+    &--wrapper {
         position: relative;
     }
 
     &-elem {
         position: absolute;
         background: #FF3434;
-        color:#EBE5DC;
+        color: #EBE5DC;
         width: 20px;
         height: 20px;
         border-radius: 50%;
@@ -104,6 +104,7 @@ input::-webkit-search-results-decoration {
         font-weight: 400;
         text-align: center;
         right: -20%;
+        display: none;
     }
 
     @media (max-width: 768px) {
@@ -114,6 +115,6 @@ input::-webkit-search-results-decoration {
     }
 }
 
-.basket__active{
+.basket__active {
     fill: #E37A7A;
 }

@@ -1,5 +1,5 @@
-import { generateCartItem } from './addToCart.js'
-
+import { addCountItems } from './basketCounter.js';
+import { generateCartItem } from './addToCart.js';
 const basket = document.querySelector('.header__basket--wrapper');
 const basketMenu = document.querySelector('.shopping__bag');
 const basketBtn = document.querySelector('.header__basket');
@@ -13,6 +13,9 @@ clearbtn.addEventListener('click', () => {
     let clearedCart = []
     localStorage.setItem('cart', JSON.stringify(clearedCart));
     basket.innerHTML = ''
+    const counter = document.querySelector('.header__basket-elem');
+    counter.innerText = '0'
+    counter.style.display = 'none'
     changeCart(clearedCart)
 })
 //открывает корзину по клику
@@ -84,4 +87,5 @@ export const getCards = () => {
 }
 
 getCards()
+addCountItems()
 localStorage.setItem('cart', JSON.stringify(cards));
