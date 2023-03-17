@@ -1,8 +1,9 @@
 .header {
     background: #EBE5DC;
     width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: 5;
 
     &--wrapper {
@@ -90,15 +91,16 @@ input::-webkit-search-results-decoration {
     border: transparent;
     background-color: #EBE5DC;
     cursor: pointer;
+    transition: 0s;
 
-    &--wrapper{
+    &--wrapper {
         position: relative;
     }
 
     &-elem {
         position: absolute;
         background: #FF3434;
-        color:#EBE5DC;
+        color: #EBE5DC;
         width: 20px;
         height: 20px;
         border-radius: 50%;
@@ -109,6 +111,10 @@ input::-webkit-search-results-decoration {
         right: -20%;
     }
 
+    svg {
+        transition: 0s;
+    }
+
     @media (max-width: 768px) {
         & svg {
             width: 26px;
@@ -117,6 +123,6 @@ input::-webkit-search-results-decoration {
     }
 }
 
-.basket__active{
+.basket__active {
     fill: #E37A7A;
 }

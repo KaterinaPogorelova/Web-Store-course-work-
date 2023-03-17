@@ -1,5 +1,5 @@
 .trends {
-	padding-top: 50px;
+	padding: 25px 0px 10px;
 
 	&__title {
 		font-family: 'Krona One', sans-serif;
@@ -321,4 +321,9 @@
 		margin-top: 10px;
 		font-size: 16px;
 	}
+}
+
+.mark {
+	background-color: #E37A7A;
+	color: white;
 }
