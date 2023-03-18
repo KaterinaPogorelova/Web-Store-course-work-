@@ -91,8 +91,7 @@ export function generateCartItem(title, currentPrice, source, count, id, needSiz
 	const cardPrice = document.createElement('p')
 	cardPrice.classList.add('card__price')
 	//Генерация цены из currentPrice
-		// cardPrice.innerText = `${currentPrice} $`
-	//Общая сумма одного товара (надо привязать эту переменную в событие клик + и -)
+	//Общая сумма одного товара (работает только при перезагрузке страницы)
 	let sumPrice = (Number(currentPrice)) * (Number(count)) + '$';
 	cardPrice.innerText = sumPrice;
 	priceWrap.append(cardPrice)

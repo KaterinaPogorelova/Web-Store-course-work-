@@ -90,7 +90,7 @@ getCards()
 
 localStorage.setItem('cart', JSON.stringify(cards));
 
-// Сумма всех товаров (тоже надо связать с нажатием на + и -)
+// Сумма всех товаров (работает только при перезагрузке страницы)
 export function allItemsSum (){
     const total = document.querySelector('.shopping__bag-total');
     const itemsArray = document.querySelectorAll('.card__price');
