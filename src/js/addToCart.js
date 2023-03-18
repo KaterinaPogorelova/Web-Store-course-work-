@@ -64,7 +64,10 @@ export function generateCartItem(title, currentPrice, source, count, id) {
 	const cardPrice = document.createElement('p')
 	cardPrice.classList.add('card__price')
 	//Генерация цены из currentPrice
-	cardPrice.innerText = `${currentPrice} $`
+		// cardPrice.innerText = `${currentPrice} $`
+	//Общая сумма одного товара (надо привязать эту переменную в событие клик + и -)
+	let sumPrice = (Number(currentPrice)) * (Number(count)) + '$';
+	cardPrice.innerText = sumPrice;
 	priceWrap.append(cardPrice)
 	const cardCount = document.createElement('div')
 	cardCount.classList.add('card__count')

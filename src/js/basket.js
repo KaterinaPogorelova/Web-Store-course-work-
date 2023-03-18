@@ -60,3 +60,18 @@ export const getCards = () => {
 
 getCards()
 localStorage.setItem('cart', JSON.stringify(cards));
+
+// Сумма всех товаров (тоже надо связать с нажатием на + и -)
+export function allItemsSum (){
+    const total = document.querySelector('.shopping__bag-total');
+    const itemsArray = document.querySelectorAll('.card__price');
+    let prices = []
+    itemsArray.forEach((elem) => {
+        let strElem = elem.innerText.split('$').join('');
+        let numElem = Number(strElem)
+        prices.push(numElem)
+})
+const sumOfPrices = prices.reduce((acc, number) => acc + number, 0);
+total.innerText = 'Total:' + sumOfPrices + '$';
+}
+allItemsSum()
