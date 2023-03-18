@@ -1,7 +1,10 @@
-import { existInStorage, addToCart, changeCountNum } from './addToCart.js'
+import { increaseCount } from './basketCounter.js'
+import { existInStorage, addToCart, changeCountNum, addtoCartPopUp } from './addToCart.js'
 import { getCard } from './basket.js'
+
 //Функция для генерации окна просмотра товара вблизи
-export function generateItemFastReview(title, currentPrice, id, beforePrice, source) {
+let selectedSize = ''
+export function generateItemFastReview(title, currentPrice, id, beforePrice, source, needSizes) {
 	//Добавить затемнение экрана на body
 	const darkBack = document.createElement('div')
 	darkBack.classList.add('dark-back')
@@ -20,8 +23,8 @@ export function generateItemFastReview(title, currentPrice, id, beforePrice, sou
 
 	const img = document.createElement('img')
 	//Вставить картинку из mockapi
-	img.src = '/laura-chouette.38ab3c43.jpg'
-	img.alt = 'Jacket'
+	img.src = source
+	img.alt = title
 	imgWrap.append(img)
 	const fullInfoWrap = document.createElement('div')
 	fullInfoWrap.classList.add('item-full__info-wrapper')
@@ -57,75 +60,102 @@ export function generateItemFastReview(title, currentPrice, id, beforePrice, sou
 	price.innerText = beforePrice
 	fullBeforePrice.innerText = '$'
 	fullBeforePrice.prepend(price)
-	//Вставить размеры, если нужно 
-	const ulSizes = document.createElement('ul')
-	ulSizes.classList.add('item-full__sizes')
-	fullInfoWrap.append(ulSizes)
-	const XS = document.createElement('li')
-	XS.classList.add('item-full__size')
-	ulSizes.append(XS)
-	const labelXS = document.createElement('label')
-	labelXS.classList.add('size__value')
-	labelXS.innerText = 'XS'
-	XS.append(labelXS)
-	const S = document.createElement('li')
-	S.classList.add('item-full__size')
-	ulSizes.append(S)
-	const labelS = document.createElement('label')
-	labelS.classList.add('size__value')
-	labelS.innerText = 'S'
-	S.append(labelS)
-	const M = document.createElement('li')
-	M.classList.add('item-full__size')
-	ulSizes.append(M)
-	const labelM = document.createElement('label')
-	labelM.classList.add('size__value')
-	labelM.innerText = 'M'
-	M.append(labelM)
-	const L = document.createElement('li')
-	L.classList.add('item-full__size')
-	ulSizes.append(L)
-	const labelL = document.createElement('label')
-	labelL.classList.add('size__value')
-	labelL.innerText = 'L'
-	L.append(labelL)
-	const XL = document.createElement('li')
-	XL.classList.add('item-full__size')
-	ulSizes.append(XL)
-	const labelXL = document.createElement('label')
-	labelXL.classList.add('size__value')
-	labelXL.innerText = 'XL'
-	XL.append(labelXL)
+	//Вставить размеры, если нужно
+	if (needSizes) {
+		const ulSizes = document.createElement('ul')
+		ulSizes.classList.add('item-full__sizes')
+		fullInfoWrap.append(ulSizes)
+		const XS = document.createElement('li')
+		XS.classList.add('item-full__size')
+		ulSizes.append(XS)
+		const labelXS = document.createElement('label')
+		labelXS.classList.add('size__value')
+		labelXS.innerText = 'XS'
+		XS.append(labelXS)
+		const S = document.createElement('li')
+		S.classList.add('item-full__size')
+		ulSizes.append(S)
+		const labelS = document.createElement('label')
+		labelS.classList.add('size__value')
+		labelS.innerText = 'S'
+		S.append(labelS)
+		const M = document.createElement('li')
+		M.classList.add('item-full__size')
+		ulSizes.append(M)
+		const labelM = document.createElement('label')
+		labelM.classList.add('size__value')
+		labelM.innerText = 'M'
+		M.append(labelM)
+		const L = document.createElement('li')
+		L.classList.add('item-full__size')
+		ulSizes.append(L)
+		const labelL = document.createElement('label')
+		labelL.classList.add('size__value')
+		labelL.innerText = 'L'
+		L.append(labelL)
+		const XL = document.createElement('li')
+		XL.classList.add('item-full__size')
+		ulSizes.append(XL)
+		const labelXL = document.createElement('label')
+		labelXL.classList.add('size__value')
+		labelXL.innerText = 'XL'
+		XL.append(labelXL)
 
 
-	//Анимация выбора размера
-	const allSizes = ulSizes.children
-	for (const elem of allSizes) {
-		elem.addEventListener('click', () => {
-			elem.classList.toggle('item-full__size--selected')
-			//потом добавить в объект свойство размер для отображения в корзине 
-			for (let i = 0; i < allSizes.length; i++) {
-				if (allSizes[i] !== elem) {
-					if (allSizes[i].classList.contains('item-full__size--selected')) {
-						allSizes[i].classList.remove('item-full__size--selected')
+		//Анимация выбора размера
+		const allSizes = ulSizes.children
+
+		for (const elem of allSizes) {
+			elem.addEventListener('click', () => {
+				elem.classList.toggle('item-full__size--selected')
+				//Помещает в переменную, выбранный пользователем размер 
+				selectedSize = elem.firstElementChild.innerText
+				//потом добавить в объект свойство размер для отображения в корзине 
+				for (let i = 0; i < allSizes.length; i++) {
+					if (allSizes[i] !== elem) {
+						if (allSizes[i].classList.contains('item-full__size--selected')) {
+							allSizes[i].classList.remove('item-full__size--selected')
+						}
 					}
 				}
-			}
-		})
-	}
-	//Конец списка размеров
+			})
+		}
+	} //Конец списка размеров
 
 	const buttonFullCart = document.createElement('button')
 	buttonFullCart.classList.add('item-full__button-cart')
 	buttonFullCart.innerText = 'Add to Cart'
 	fullInfoWrap.append(buttonFullCart)
 	buttonFullCart.addEventListener('click', () => {
-		let exist = existInStorage(id)
-		if (!exist) {
-			addToCart(title, currentPrice, id, source)
-			getCard(id)
+		if (!(localStorage.hasOwnProperty('cart'))) {
+			return
+		}
+		if (needSizes && selectedSize === '') {
+			chooseSizePopUp()
 		} else {
-			changeCountNum(id)
+			let exist = existInStorage(id, needSizes, selectedSize)
+			if (!exist) {
+				if (needSizes) {
+					addToCart(title, currentPrice, id, source, needSizes, selectedSize)
+					getCard(id, needSizes, selectedSize)
+					selectedSize = ''
+					increaseCount()
+					addtoCartPopUp()
+				} else {
+					addToCart(title, currentPrice, id, source, needSizes)
+					getCard(id, needSizes)
+					increaseCount()
+					addtoCartPopUp()
+				}
+			} else {
+				if (needSizes) {
+					changeCountNum(id, needSizes, selectedSize)
+					selectedSize = ''
+				} else {
+					changeCountNum(id, needSizes)
+				}
+				addtoCartPopUp()
+			}
 		}
 	})
 	//Анимировать кнопку close
@@ -133,4 +163,14 @@ export function generateItemFastReview(title, currentPrice, id, beforePrice, sou
 		fullItem.remove()
 		darkBack.remove()
 	})
+}
+
+function chooseSizePopUp() {
+	const popup = document.createElement('p')
+	popup.classList.add('pop-up')
+	popup.innerText = 'Пожалуйста, выберите размер!'
+	document.body.append(popup)
+	setTimeout(() => {
+		popup.remove()
+	}, 2000)
 }
