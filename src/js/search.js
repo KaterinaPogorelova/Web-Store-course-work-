@@ -5,7 +5,6 @@ export function search() {
     const title = document.querySelector('.trends__title');
     const titleNotFound = document.querySelector('.trends__not-found');
     let notFound = true;
-    //Создать переменную c boolean значением (флаг-переменная), которая будет сигналом для выдачи фразы "Not found"
 
     for (let i = 0; i < titles.length; i++) {
         let elem = titles[i]
@@ -18,18 +17,18 @@ export function search() {
                 elem.innerHTML = insertMark(str, position, input.value.length)
                 elem.parentElement.style.display = '';
                 notFound = false;
-                /*Для условия, когда совпадения найдены или когда пользователь ничего не ввёл
-                меняем переменную, чтобы она не подходила под условие вывода фразы not found*/
+                title.style.display = 'block';
+                titleNotFound.style.display = 'none';
             }
             else {
                 elem.parentElement.style.display = 'none';
-                notFound = true;
             }
         } else {
-            //Показывает все товары
             elem.parentElement.style.display = '';
             elem.innerHTML = elem.innerText;
             notFound = false;
+            title.style.display = 'block';
+            titleNotFound.style.display = 'none';
         }
     }
 
@@ -38,7 +37,7 @@ export function search() {
         title.style.display = 'none';
         titleNotFound.style.display = 'block';
     }
-    
+
     //Подсвечиваем совпадения
     function insertMark(str, pos, leng) {
         let before = str.slice(0, pos)

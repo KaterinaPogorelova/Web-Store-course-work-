@@ -1,6 +1,6 @@
 import { increaseCount } from './basketCounter.js'
 import { existInStorage, addToCart, changeCountNum, addtoCartPopUp } from './addToCart.js'
-import { getCard } from './basket.js'
+import { getCard, allItemsSum } from './basket.js'
 
 //Функция для генерации окна просмотра товара вблизи
 let selectedSize = ''
@@ -140,11 +140,13 @@ export function generateItemFastReview(title, currentPrice, id, beforePrice, sou
 					getCard(id, needSizes, selectedSize)
 					selectedSize = ''
 					increaseCount()
+					allItemsSum()
 					addtoCartPopUp()
 				} else {
 					addToCart(title, currentPrice, id, source, needSizes)
 					getCard(id, needSizes)
 					increaseCount()
+					allItemsSum()
 					addtoCartPopUp()
 				}
 			} else {

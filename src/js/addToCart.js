@@ -1,4 +1,4 @@
-import { changeCart } from './basket.js'
+import { changeCart, allItemsSum } from './basket.js'
 import { addCountItems, reduceCount, increaseCount } from './basketCounter.js';
 
 function CartItem(title, currentPrice, id, imgSrc, needSizes, size) {
@@ -93,8 +93,10 @@ export function generateCartItem(title, currentPrice, source, count, id, needSiz
 	cardPrice.classList.add('card__price')
 	//Генерация цены из currentPrice
 	//Общая сумма одного товара (работает только при перезагрузке страницы)
+
 	let sumPrice = (Number(currentPrice)) * (Number(count)) + '$';
 	cardPrice.innerText = sumPrice;
+
 	priceWrap.append(cardPrice)
 	const cardCount = document.createElement('div')
 	cardCount.classList.add('card__count')
@@ -152,6 +154,7 @@ export function generateCartItem(title, currentPrice, source, count, id, needSiz
 				}
 			}
 		}
+		allItemsSum()
 		addCountItems()
 	})
 }
@@ -166,6 +169,7 @@ export function changeCountNum(itemId, needSizes, size, needReduce) {
 	}
 	const childs = card.children
 	const wrap = childs[childs.length - 2]
+	//const priceSumEl = wrap.firstElementChild
 	const countWrap = wrap.lastElementChild
 	const count = countWrap.children[1]
 	const countNum = Number(count.innerText)
@@ -176,6 +180,7 @@ export function changeCountNum(itemId, needSizes, size, needReduce) {
 				if (needReduce && countNum > 1) {
 					elem.count--
 					count.innerText = countNum - 1
+					changeCardSum(card, elem.currentPrice, elem.count)
 					reduceCount()
 					localStorage.setItem('cart', JSON.stringify(cart));
 				} else if (needReduce && countNum === 1) {
@@ -183,6 +188,7 @@ export function changeCountNum(itemId, needSizes, size, needReduce) {
 				} else {
 					elem.count++
 					count.innerText = countNum + 1
+					changeCardSum(card, elem.currentPrice, elem.count)
 					increaseCount()
 					localStorage.setItem('cart', JSON.stringify(cart));
 				}
@@ -195,6 +201,7 @@ export function changeCountNum(itemId, needSizes, size, needReduce) {
 				if (needReduce && countNum > 1) {
 					elem.count--
 					count.innerText = countNum - 1
+					changeCardSum(card, elem.currentPrice, elem.count)
 					reduceCount()
 					localStorage.setItem('cart', JSON.stringify(cart));
 				} else if (needReduce && countNum === 1) {
@@ -202,12 +209,14 @@ export function changeCountNum(itemId, needSizes, size, needReduce) {
 				} else {
 					elem.count++
 					count.innerText = countNum + 1
+					changeCardSum(card, elem.currentPrice, elem.count)
 					increaseCount()
 					localStorage.setItem('cart', JSON.stringify(cart));
 				}
 			}
 		}
 	}
+	allItemsSum()
 }
 
 export function addtoCartPopUp() {
@@ -218,4 +227,12 @@ export function addtoCartPopUp() {
 	setTimeout(() => {
 		popup.remove()
 	}, 1000)
+}
+
+function changeCardSum(card, price, count) {
+	const childs = card.children
+	const wrap = childs[childs.length - 2]
+	const priceSumEl = wrap.firstElementChild
+	let newSum = price * count
+	priceSumEl.innerText = `${newSum}$`
 }

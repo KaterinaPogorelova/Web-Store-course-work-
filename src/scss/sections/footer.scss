@@ -10,16 +10,22 @@
         }
     }
 
-    &__info{
+    &__info {
         text-align: center;
+        font-family: 'Font', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
 
-        & span{
+        & span {
             color: #E37A7A;
         }
     }
 
-    &__authors{
+    &__authors {
         text-align: center;
+        font-family: 'Krone One', sans-serif;
+        font-weight: 400;
         color: #E37A7A;
+        font-size: 12px;
     }
 }
