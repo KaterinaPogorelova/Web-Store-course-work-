@@ -1,6 +1,10 @@
 .header {
     background: #EBE5DC;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
 
     &--wrapper {
         display: flex;
@@ -28,7 +32,7 @@
 }
 
 .header__search {
-    background-color: #D7D7D7;
+    background-color: #f4f1f1;
     border: 1px solid #B5A0A0;
     border-radius: 100px;
     width: 100%;
@@ -87,6 +91,7 @@ input::-webkit-search-results-decoration {
     border: transparent;
     background-color: #EBE5DC;
     cursor: pointer;
+    transition: 0s;
 
     &--wrapper {
         position: relative;
@@ -105,6 +110,10 @@ input::-webkit-search-results-decoration {
         text-align: center;
         right: -20%;
         display: none;
+    }
+
+    svg {
+        transition: 0s;
     }
 
     @media (max-width: 768px) {

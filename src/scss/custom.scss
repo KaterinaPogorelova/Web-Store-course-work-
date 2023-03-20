@@ -7,6 +7,10 @@
 	transition: all .3s ease-in-out;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 .dark-back {
 	opacity: .8;
 	width: 100vw;

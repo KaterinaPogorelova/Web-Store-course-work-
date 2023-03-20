@@ -1,7 +1,7 @@
 import { increaseCount } from './basketCounter.js'
 import { generateItemFastReview } from './fastReview.js'
 import { existInStorage, addToCart, changeCountNum, addtoCartPopUp } from './addToCart.js'
-import { getCard } from './basket.js'
+import { getCard, allItemsSum } from './basket.js'
 
 export const trendsItemWrapper = document.querySelector('.trends__item-wrapper')
 
@@ -82,15 +82,18 @@ export function renderCards({ title, currentPrice, beforePrice, imgSrc, needSize
                     addToCart(title, currentPrice, id, image.src, needSizes, selectedSize)
                     getCard(id, needSizes, selectedSize)
                     increaseCount()
+                    allItemsSum()
                     addtoCartPopUp()
                 } else {
                     addToCart(title, currentPrice, id, image.src, needSizes)
                     getCard(id, needSizes)
                     increaseCount()
+                    allItemsSum()
                     addtoCartPopUp()
                 }
             } else {
                 changeCountNum(id, needSizes, selectedSize)
+                allItemsSum()
                 addtoCartPopUp()
             }
             sizesWrap.classList.remove('img-wrapper__sizes--active')
@@ -118,10 +121,12 @@ export function renderCards({ title, currentPrice, beforePrice, imgSrc, needSize
                 //Отрисовывает карточку в корзине
                 getCard(id, needSizes)
                 increaseCount()
+                allItemsSum()
                 addtoCartPopUp()
             } else {
                 //Изменяет свойство count в localStorage и визуально в корзине
                 changeCountNum(id)
+                allItemsSum()
                 addtoCartPopUp()
             }
         }

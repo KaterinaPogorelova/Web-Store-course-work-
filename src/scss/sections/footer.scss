@@ -1,0 +1,31 @@
+.footer {
+    background: #EBE5DC;
+    width: 100%;
+
+    &--wrapper {
+        padding: 20px 280px;
+
+        @media (max-width: 768px) {
+            padding: 25px 10px;
+        }
+    }
+
+    &__info {
+        text-align: center;
+        font-family: 'Font', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+
+        & span {
+            color: #E37A7A;
+        }
+    }
+
+    &__authors {
+        text-align: center;
+        font-family: 'Krone One', sans-serif;
+        font-weight: 400;
+        color: #E37A7A;
+        font-size: 12px;
+    }
+}

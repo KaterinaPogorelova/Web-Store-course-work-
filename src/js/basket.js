@@ -17,6 +17,7 @@ clearbtn.addEventListener('click', () => {
     counter.innerText = '0'
     counter.style.display = 'none'
     changeCart(clearedCart)
+    allItemsSum()
 })
 //открывает корзину по клику
 export const getBasket = basket.addEventListener('click', () => {
@@ -87,5 +88,34 @@ export const getCards = () => {
 }
 
 getCards()
-addCountItems()
+
 localStorage.setItem('cart', JSON.stringify(cards));
+
+// Сумма всех товаров (работает только при перезагрузке страницы)
+export function allItemsSum() {
+    if (!(localStorage.hasOwnProperty('cart'))) {
+        return
+    }
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    let totalSum = 0
+    const total = document.querySelector('.shopping__bag-total');
+    if (cart.length !== 0) {
+        for (const elem of cart) {
+            totalSum += (elem.currentPrice * elem.count)
+        }
+    }
+    //const itemsArray = document.querySelectorAll('.card__price');
+    // let prices = []
+    /* itemsArray.forEach((elem) => {
+        let strElem = elem.innerText.split('$').join('');
+        let numElem = Number(strElem)
+        prices.push(numElem)
+    }) 
+    const sumOfPrices = prices.reduce((acc, number) => acc + number, 0);*/
+    total.innerText = 'Total: ' + totalSum + '$';
+}
+
+allItemsSum()
+addCountItems()
+//localStorage.setItem('cart', JSON.stringify(cards));
+
