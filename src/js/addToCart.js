@@ -1,5 +1,6 @@
 import { changeCart } from './basket.js'
 import { addCountItems, reduceCount, increaseCount } from './basketCounter.js';
+
 function CartItem(title, currentPrice, id, imgSrc, needSizes, size) {
 	this.title = title
 	this.currentPrice = currentPrice
@@ -109,6 +110,7 @@ export function generateCartItem(title, currentPrice, source, count, id, needSiz
 		} else {
 			changeCountNum(id, needSizes, false, needReduce)
 		}
+
 	})
 	const countValue = document.createElement('p')
 	countValue.classList.add('card__count-sum')
@@ -125,6 +127,7 @@ export function generateCartItem(title, currentPrice, source, count, id, needSiz
 		} else {
 			changeCountNum(id, needSizes)
 		}
+
 	})
 	const close = document.createElement('div')
 	close.classList.add('closeBtn')

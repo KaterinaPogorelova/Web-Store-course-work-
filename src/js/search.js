@@ -7,12 +7,6 @@ export function search() {
     let notFound = true;
     //Создать переменную c boolean значением (флаг-переменная), которая будет сигналом для выдачи фразы "Not found"
 
-    //Условие для вывода фразы not found
-    if (notFound = true) {
-        title.style.display = 'none';
-        titleNotFound.style.display = 'block';
-    }
-
     for (let i = 0; i < titles.length; i++) {
         let elem = titles[i]
         let modifyElem = elem.innerText.toUpperCase();
@@ -23,24 +17,28 @@ export function search() {
                 let position = modifyElem.search(filter)
                 elem.innerHTML = insertMark(str, position, input.value.length)
                 elem.parentElement.style.display = '';
-                // notFound = false;
+                notFound = false;
                 /*Для условия, когда совпадения найдены или когда пользователь ничего не ввёл
                 меняем переменную, чтобы она не подходила под условие вывода фразы not found*/
             }
             else {
                 elem.parentElement.style.display = 'none';
                 notFound = true;
-                // title.style.display = 'none';
-                // titleNotFound.style.display = 'inline';
             }
         } else {
             //Показывает все товары
             elem.parentElement.style.display = '';
             elem.innerHTML = elem.innerText;
-            // notFound = false;
+            notFound = false;
         }
     }
 
+    //Условие для вывода фразы not found
+    if (notFound) {
+        title.style.display = 'none';
+        titleNotFound.style.display = 'block';
+    }
+    
     //Подсвечиваем совпадения
     function insertMark(str, pos, leng) {
         let before = str.slice(0, pos)

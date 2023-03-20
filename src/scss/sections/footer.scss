@@ -1,0 +1,25 @@
+.footer {
+    background: #EBE5DC;
+    width: 100%;
+
+    &--wrapper {
+        padding: 20px 280px;
+
+        @media (max-width: 768px) {
+            padding: 25px 10px;
+        }
+    }
+
+    &__info{
+        text-align: center;
+
+        & span{
+            color: #E37A7A;
+        }
+    }
+
+    &__authors{
+        text-align: center;
+        color: #E37A7A;
+    }
+}
