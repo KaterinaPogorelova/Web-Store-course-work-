@@ -1,83 +1,66 @@
-export function search() {
+const input = document.querySelector(".header__search");
+const searchBtn = document.querySelector('.header__search-button');
+
+//Search bar
+searchBtn.addEventListener('click', () => {
     const input = document.querySelector(".header__search");
-    const filter = input.value.toUpperCase();
+    const upperValue = input.value.toUpperCase();
     const titles = document.querySelectorAll(".item__title");
-    const title = document.querySelector('.trends__title');
+    const sectionTitle = document.querySelector('.trends__title');
     const titleNotFound = document.querySelector('.trends__not-found');
+
     let notFound = true;
 
     for (let i = 0; i < titles.length; i++) {
-        let elem = titles[i]
-        let modifyElem = elem.innerText.toUpperCase();
+        let title = titles[i]
+        let upperTitle = title.innerText.toUpperCase();
 
-        if (filter !== '') {
-            if (modifyElem.includes(filter)) {
-                let str = elem.innerText
-                let position = modifyElem.search(filter)
-                elem.innerHTML = insertMark(str, position, input.value.length)
-                elem.parentElement.style.display = '';
+        if (upperValue !== '') {
+            if (upperTitle.includes(upperValue)) {
+                let str = title.innerText
+                let position = upperTitle.search(upperValue)
+                title.innerHTML = insertMark(str, position, input.value.length)
+
                 notFound = false;
-                title.style.display = 'block';
+
+                title.parentElement.style.display = '';
+                sectionTitle.style.display = 'block';
                 titleNotFound.style.display = 'none';
             }
             else {
-                elem.parentElement.style.display = 'none';
+                title.parentElement.style.display = 'none';
             }
         } else {
-            elem.parentElement.style.display = '';
-            elem.innerHTML = elem.innerText;
+            title.innerHTML = title.innerText;
+
             notFound = false;
-            title.style.display = 'block';
+
+            title.parentElement.style.display = '';
+            sectionTitle.style.display = 'block';
             titleNotFound.style.display = 'none';
         }
     }
 
-    //Условие для вывода фразы not found
+    //Condition for the output of the phrase "not found"
     if (notFound) {
-        title.style.display = 'none';
+        sectionTitle.style.display = 'none';
         titleNotFound.style.display = 'block';
     }
+})
 
-    //Подсвечиваем совпадения
-    function insertMark(str, pos, leng) {
-        let before = str.slice(0, pos)
-        let userInput = str.slice(pos, pos + leng)
-        let after = str.slice(pos + leng)
-        return before + '<span class="mark">' + userInput + '</span>' + after
-    }
-
-    //Это надо будет для выпадающей строки(режим живого поиска)
-
-    // input.oninput = () => {
-    //     let val = input.value;
-    //     if (val !== '') {
-    //         titles.forEach(function (elem) {
-    //             if (elem.innerText.search(val) === -1) {
-    //                 elem.parentElement.style.display = 'none';
-    //                 // elem.innerHTML = elem.innerText;
-    //             } else {
-    //                 elem.parentElement.style.display = '';
-    //                 // let str = elem.innerText;
-    //                 // let position = elem.innerText.search(val);
-    //                 // elem.innerHTML = insertMark(str, position, val.length);
-    //             }
-    //         })
-    //     } else {
-    //         titles.forEach(function (elem) {
-    //             elem.parentElement.style.display = '';
-    //     //         elem.innerHTML = elem.innerText;
-    //         })
-    //     }
-    // }
+//Highlight the matches
+function insertMark(str, pos, leng) {
+    let before = str.slice(0, pos)
+    let userInput = str.slice(pos, pos + leng)
+    let after = str.slice(pos + leng)
+    return before + '<span class="mark">' + userInput + '</span>' + after
 }
 
-const magicGlass = document.querySelector('.header__search-button');
-magicGlass.addEventListener('click', search)
 
-const input = document.querySelector(".header__search");
+//Animates key "enter"
 input.addEventListener('keyup', (event) => {
     event.preventDefault();
     if (event.keyCode === 13) {
-        magicGlass.click();
+        searchBtn.click();
     }
 })

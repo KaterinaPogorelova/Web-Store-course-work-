@@ -1,4 +1,4 @@
-export const swiper = new Swiper('.swiper', {
+const swiper = new Swiper('.swiper', {
     loop: true,
     navigation: {
         nextEl: '.swiper-button-next',
