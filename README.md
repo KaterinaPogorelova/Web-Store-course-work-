@@ -1,10 +1,7 @@
 # Web-Store-course-work-
 Our course work
-<h1 align='center'>Текущие задания по JS:</h1>
 
-<h3 align='left'>Катя:</h3>
-
-+ Оптимизация JS кода
+<h1 align='center'>FINISHED!</h1>
 
 **ДОПОЛНИТЕЛЬНО!**
 
