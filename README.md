@@ -2,6 +2,7 @@
 Our course work
 
 <h1 align='center'>FINISHED!</h1>
+LINK: https://bright-palmier-b40f4a.netlify.app/
 
 **ДОПОЛНИТЕЛЬНО!**
 
