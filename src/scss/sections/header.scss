@@ -115,13 +115,6 @@ input::-webkit-search-results-decoration {
     svg {
         transition: 0s;
     }
-
-    @media (max-width: 768px) {
-        & svg {
-            width: 26px;
-            height: 26px;
-        }
-    }
 }
 
 .basket__active {

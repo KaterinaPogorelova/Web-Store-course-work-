@@ -716,13 +716,6 @@ input::-webkit-search-decoration, input::-webkit-search-cancel-button, input::-w
   transition: all;
 }
 
-@media (max-width: 768px) {
-  .header__basket svg {
-    width: 26px;
-    height: 26px;
-  }
-}
-
 .basket__active {
   fill: #e37a7a;
 }
