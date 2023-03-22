@@ -6,7 +6,7 @@ import { draWNewCard, changeTotalSum } from './basket.js'
 
 // Gets product cards from the server
 function getProductCards() {
-    fetch(`https://6405d1c4eed195a99f8d974d.mockapi.io/api/items`)
+    fetch(`https://63fa41c1beec322c57f054bd.mockapi.io/items`)
         .then((response) => response.json())
         .then((json) => {
             for (const object of json) {

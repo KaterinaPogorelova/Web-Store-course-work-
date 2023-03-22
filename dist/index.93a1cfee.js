@@ -564,7 +564,7 @@ var _addToCartJs = require("./addToCart.js");
 var _basketJs = require("./basket.js");
 // Gets product cards from the server
 function getProductCards() {
-    fetch(`https://6405d1c4eed195a99f8d974d.mockapi.io/api/items`).then((response)=>response.json()).then((json)=>{
+    fetch(`https://63fa41c1beec322c57f054bd.mockapi.io/items`).then((response)=>response.json()).then((json)=>{
         for (const object of json)renderCards(object);
     }).catch((error)=>console.log(error));
 }
